@@ -1,0 +1,54 @@
+{
+  "name": "edds",
+  "version": "0.1.0",
+  "description": "Event Driven Decision System: a decision model picks which listeners an event fires, instead of hand-written matchers.",
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "default": "./dist/index.js"
+    },
+    "./node": {
+      "types": "./dist/node.d.ts",
+      "default": "./dist/node.js"
+    },
+    "./anthropic": {
+      "types": "./dist/anthropic.d.ts",
+      "default": "./dist/anthropic.js"
+    }
+  },
+  "files": [
+    "dist"
+  ],
+  "engines": {
+    "node": ">=22.6"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.build.json",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "node --experimental-strip-types --no-warnings --test \"test/*.test.ts\"",
+    "review": "node --experimental-strip-types --no-warnings dev/review/cli.ts",
+    "example": "node --experimental-strip-types --no-warnings examples/support-inbox.ts"
+  },
+  "keywords": [
+    "events",
+    "decision-model",
+    "llm",
+    "routing",
+    "pubsub"
+  ],
+  "license": "MIT",
+  "devDependencies": {
+    "@anthropic-ai/sdk": "^1.3.0",
+    "@types/node": "^22.20.5",
+    "typescript": "^7.0.2"
+  },
+  "peerDependencies": {
+    "@anthropic-ai/sdk": ">=1.3.0"
+  },
+  "peerDependenciesMeta": {
+    "@anthropic-ai/sdk": {
+      "optional": true
+    }
+  }
+}
